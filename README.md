@@ -31,8 +31,8 @@ result:
 
 ### Props
 
-| Props        | Required     | Type            | Definition                                        |
-| :----------- |:-------------| :-------------  |:-------------                                     |
-| prefix       | false        | String          | Any prefix string you want to add to the output   |
-| suffix       | false        | String          | Any suffix string you want to add to the output   |
-| date         | true         | String          | The sate in ISO 8601 (default format of moment.js)|
+| Props        | Required     | Type            | Definition                                            |
+| :----------- |:-------------| :-------------  |:-------------                                         |
+| prefix       | false        | String          | Any prefix string you want to add to the output       |
+| suffix       | false        | String          | Any suffix string you want to add to the output       |
+| date         | true         | String          | The date is in ISO 8601 (default format of moment.js) |
