@@ -1,2 +1,2 @@
-import VuejsHelloApp from './components/moments-ago.vue'
-export default VuejsHelloApp
+import VueMomentsAgo from './components/moments-ago.vue'
+export default VueMomentsAgo
