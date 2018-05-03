@@ -1,5 +1,12 @@
 # vue-moments-ago
-A Vue.js component for updating human readable time format.
+A Vue.js component for updating human readable time format. 
+
+eg:
+```
+posted 2 minutes ago
+```
+this is automatically updated without any refresh. Checkout this [Live Demo](https://codesandbox.io/s/m4x9kw090p)
+
 
 ### Install 
 ```
