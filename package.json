@@ -1,6 +1,6 @@
 {
   "name": "vue-moments-ago",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Vue.js component for dynamically updating human readable time format.",
   "main": "src/main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "webpack -p"
   },
   "author": "Jilson Thomas",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "moment": "^2.22.1",
     "vue": "^2.5.16"
@@ -17,6 +17,19 @@
     "type": "git",
     "url": "git+https://github.com/JillzTom/vue-moments-ago.git"
   },
+  "bugs": {
+    "url": "https://github.com/JillzTom/vue-moments-ago/issues"
+  },
+  "keywords": [
+    "vue",
+    "custom",
+    "date",
+    "time",
+    "filter",
+    "moment",
+    "moment.js",
+    "ago"
+  ],
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
