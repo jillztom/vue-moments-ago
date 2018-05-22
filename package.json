@@ -1,6 +1,6 @@
 {
   "name": "vue-moments-ago",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A Vue.js component for dynamically updating human readable time format.",
   "main": "src/main.js",
   "scripts": {

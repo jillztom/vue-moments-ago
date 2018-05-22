@@ -1,7 +1,5 @@
 <template>
-  <div v-if="date">
-    <span class="vue-moments-ago">{{ prefix }} {{ humanDifference | plural(humanWord) }} {{suffix}}</span>
-  </div>
+  <span v-if="date" class="vue-moments-ago">{{ prefix }} {{ humanDifference | plural(humanWord) }} {{suffix}}</span>
 </template>
 
 <script>
