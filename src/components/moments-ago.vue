@@ -56,7 +56,6 @@ export default {
     plural(value, name, lang) {
       let plural;
       if (value === 0) {
-        console.log("language : ", lang);
         if (lang == "kr") {
           return "몇" + name;
         } else if (lang == "jp") {
@@ -97,11 +96,7 @@ export default {
         } else {
           humanEpoch = this.epochs[i];
         }
-
-        console.log(this[epoch]);
         interval = Math.floor(seconds / this[epoch]);
-        console.log("epoch : ", humanEpoch);
-        console.log("interval : ", interval);
         if (interval >= 1) {
           return { interval: interval, humanEpoch: humanEpoch };
         }
