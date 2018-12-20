@@ -42,7 +42,7 @@ export default {
     },
     lang: {
       type: String,
-      required: true
+      default: "en"
     }
   },
 
@@ -64,7 +64,7 @@ export default {
           return "a few " + name + "s";
         }
       } else if (value > 1) {
-        if (lang != "kr" && lang != "jp") {
+        if (lang == "en") {
           return value + " " + name + "s";
         } else {
           return value + " " + name + "";
