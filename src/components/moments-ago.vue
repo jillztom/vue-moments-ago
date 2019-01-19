@@ -57,7 +57,7 @@ export default {
   filters: {
     plural(value, name, lang) {
       let plural;
-      if (value == 0) {
+      if (value === 0) {
         let names = "";
         if (lang == "kr") {
           return "몇" + name;
