@@ -6,35 +6,37 @@
 </template>
 
 <script>
-import Vue from "vue";
-import moment from "moment";
+import Vue from 'vue';
+import moment from 'moment';
 Vue.prototype.moment = moment;
 
 export default {
   data() {
     return {
-      epochs: ["year", "month", "day", "hour", "minute"],
-      epochs_kr: ["년", "달", "일", "시간", "분"],
-      epochs_jp: ["年", "月", "日", "時", "分"],
+      epochs: ['year', 'month', 'day', 'hour', 'minute'],
+      epochs_nl: ['jaar', 'maand', 'dag', 'uur', 'minuut'],
+      epochs_de: ['jahr', 'monat', 'tag', 'stunde', 'minute'],
+      epochs_kr: ['년', '달', '일', '시간', '분'],
+      epochs_jp: ['年', '月', '日', '時', '分'],
       year: 31536000,
       month: 2592000,
       day: 86400,
       hour: 3600,
       minute: 60,
-      humanReadable: "",
+      humanReadable: '',
       humanDifference: 0,
-      humanWord: "moment"
+      humanWord: 'moment'
     };
   },
 
   props: {
     prefix: {
       type: String,
-      default: "posted"
+      default: 'posted'
     },
     suffix: {
       type: String,
-      default: "ago"
+      default: 'ago'
     },
     date: {
       type: String,
@@ -42,7 +44,7 @@ export default {
     },
     lang: {
       type: String,
-      default: "en"
+      default: 'en'
     }
   },
 
@@ -55,29 +57,82 @@ export default {
   filters: {
     plural(value, name, lang) {
       let plural;
-      if (value === 0) {
-        if (lang == "kr") {
-          return "몇" + name;
-        } else if (lang == "jp") {
-          return "何" + name;
+      if (value == 0) {
+        let names = '';
+        if (lang == 'kr') {
+          return '몇' + name;
+        } else if (lang == 'jp') {
+          return '何' + name;
+        } else if (lang == 'nl') {
+          if (name == 'moment') {
+            names = 'seconden';
+          }
+          return 'enkele ' + names;
+        } else if (lang == 'de') {
+          if (name == 'moment') {
+            names = 'sekunden';
+          }
+          return 'einige ' + names;
         } else {
-          return "a few " + name + "s";
+          return 'a few ' + name + 's';
         }
       } else if (value > 1) {
-        if (lang == "en") {
-          return value + " " + name + "s";
+        let names = '';
+        if (lang == 'en') {
+          return value + ' ' + name + 's';
+        } else if (lang == 'nl') {
+          var names = '';
+          if (name == 'jaar') {
+            names = 'jaar';
+          }
+          if (name == 'maand') {
+            names = 'maanden';
+          }
+          if (name == 'dag') {
+            names = 'dagen';
+          }
+          if (name == 'uur') {
+            names = 'uur';
+          }
+          if (name == 'minuut') {
+            names = 'minuten';
+          }
+          if (name == 'moment') {
+            names = 'seconden';
+          }
+          return value + ' ' + names;
+        } else if (lang == 'de') {
+          if (name == 'jahr') {
+            names = 'jahr';
+          }
+          if (name == 'monat') {
+            names = 'monaten';
+          }
+          if (name == 'tag') {
+            names = 'tagen';
+          }
+          if (name == 'stunde') {
+            names = 'stunden';
+          }
+          if (name == 'minute') {
+            names = 'minuten';
+          }
+          if (name == 'moment') {
+            names = 'sekunden';
+          }
+          return value + ' ' + names;
         } else {
-          return value + " " + name + "";
+          return value + ' ' + name + '';
         }
       } else {
-        return value + " " + name;
+        return value + ' ' + name;
       }
     }
   },
 
   methods: {
     getSeconds(time) {
-      let seconds = moment().diff(moment(time), "seconds");
+      let seconds = moment().diff(moment(time), 'seconds');
       this.humanReadable = this.getDuration(seconds);
       if (this.humanReadable) {
         this.humanDifference = this.humanReadable.interval;
@@ -89,10 +144,14 @@ export default {
       let humanEpoch;
       for (let i = 0; i < this.epochs.length; i++) {
         epoch = this.epochs[i];
-        if (this.lang == "kr") {
+        if (this.lang == 'kr') {
           humanEpoch = this.epochs_kr[i];
-        } else if (this.lang == "jp") {
+        } else if (this.lang == 'jp') {
           humanEpoch = this.epochs_jp[i];
+        } else if (this.lang == 'nl') {
+          humanEpoch = this.epochs_nl[i];
+        } else if (this.lang == 'de') {
+          humanEpoch = this.epochs_de[i];
         } else {
           humanEpoch = this.epochs[i];
         }
