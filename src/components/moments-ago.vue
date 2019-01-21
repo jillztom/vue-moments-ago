@@ -53,6 +53,10 @@ export default {
       this.getSeconds(this.date);
     }, 1000);
   },
+  
+  created() {
+    this.getSeconds(this.date);
+  },
 
   filters: {
     plural(value, name, lang) {
