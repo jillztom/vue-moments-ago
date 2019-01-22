@@ -1,8 +1,7 @@
 <template>
-  <span
-    v-if="date"
-    class="vue-moments-ago"
-  >{{ prefix }} {{ humanDifference | plural(humanWord, lang) }} {{suffix}}</span>
+  <span v-if="date" class="vue-moments-ago"
+    >{{ prefix }} {{ humanFormatted }} {{ suffix }}</span
+  >
 </template>
 
 <script>
@@ -13,9 +12,25 @@ Vue.prototype.moment = moment;
 export default {
   data() {
     return {
-      epochs: ["year", "month", "day", "hour", "minute"],
-      epochs_kr: ["년", "달", "일", "시간", "분"],
-      epochs_jp: ["年", "月", "日", "時", "分"],
+      language: {
+        en: {
+          few: "a few",
+          postfix: "s"
+        },
+        kr: {
+          few: "몇",
+          postfix: ""
+        },
+        jp: {
+          few: "何",
+          postfix: ""
+        }
+      },
+      epochs: {
+        en: ["year", "month", "day", "hour", "minute"],
+        kr: ["년", "달", "일", "시간", "분"],
+        jp: ["年", "月", "日", "時", "分"]
+      },
       year: 31536000,
       month: 2592000,
       day: 86400,
@@ -52,25 +67,24 @@ export default {
     }, 1000);
   },
 
-  filters: {
-    plural(value, name, lang) {
-      let plural;
-      if (value === 0) {
-        if (lang == "kr") {
-          return "몇" + name;
-        } else if (lang == "jp") {
-          return "何" + name;
-        } else {
-          return "a few " + name + "s";
-        }
-      } else if (value > 1) {
-        if (lang == "en") {
-          return value + " " + name + "s";
-        } else {
-          return value + " " + name + "";
-        }
+  computed: {
+    humanFormatted() {
+      if (this.humanDifference === 0) {
+        return (
+          this.language[this.lang].few +
+          " " +
+          this.humanWord +
+          this.language[this.lang].postfix
+        );
+      } else if (this.humanDifference > 1) {
+        return (
+          this.humanDifference +
+          " " +
+          this.humanWord +
+          this.language[this.lang].postfix
+        );
       } else {
-        return value + " " + name;
+        return this.humanDifference + " " + this.humanWord;
       }
     }
   },
@@ -87,15 +101,9 @@ export default {
     getDuration(seconds) {
       let epoch, interval;
       let humanEpoch;
-      for (let i = 0; i < this.epochs.length; i++) {
-        epoch = this.epochs[i];
-        if (this.lang == "kr") {
-          humanEpoch = this.epochs_kr[i];
-        } else if (this.lang == "jp") {
-          humanEpoch = this.epochs_jp[i];
-        } else {
-          humanEpoch = this.epochs[i];
-        }
+      for (let i = 0; i < this.epochs[this.lang].length; i++) {
+        epoch = this.epochs.en[i];
+        humanEpoch = this.epochs[this.lang][i];
         interval = Math.floor(seconds / this[epoch]);
         if (interval >= 1) {
           return { interval: interval, humanEpoch: humanEpoch };
