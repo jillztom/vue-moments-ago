@@ -26,7 +26,7 @@ export default {
           postfix: ""
         },
         he: {
-          few: "לפני",
+          few: "כמה",
           postfix: "",
         }
       },
