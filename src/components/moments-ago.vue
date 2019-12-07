@@ -66,6 +66,10 @@ export default {
     }
   },
 
+  beforeMount() {
+    this.getSeconds(this.date);
+  },
+
   mounted() {
     setInterval(() => {
       this.getSeconds(this.date);
