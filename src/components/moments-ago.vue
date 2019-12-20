@@ -67,9 +67,9 @@ export default {
   },
 
   mounted() {
-    setInterval(() => {
+    this.$nextTick(() => {
       this.getSeconds(this.date);
-    }, 1000);
+    });
   },
 
   computed: {
