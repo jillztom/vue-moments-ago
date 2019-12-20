@@ -40,14 +40,20 @@ Result:
 
 ### Props
 
-| Props    | Required | Type   | Definition                                            |
-| :------- | :------- | :----- | :---------------------------------------------------- |
-| prefix   | false    | String | Any prefix string you want to add to the output       |
-| suffix   | false    | String | Any suffix string you want to add to the output       |
-| date     | true     | String | The date is in ISO 8601 (default format of moment.js) |
-| language | false    | String | default is "en"                                       |
+| Props        | Required | Type             | Definition                                            |
+| :----------- | :------- | :--------------- | :---------------------------------------------------- |
+| prefix       | false    | String           | Any prefix string you want to add to the output       |
+| suffix       | false    | String           | Any suffix string you want to add to the output       |
+| date         | true     | String           | The date is in ISO 8601 (default format of moment.js) |
+| language     | false    | String           | default is "en"                                       |
+| elementStyle | false    | String \| Object | Apply a `style` attr. on the wrapper element *        |
+| elementClass | false    | String \| Object | Apply a `class` attr. on the wrapper element *        |
 
-### Support Language
+\* elementStyle / elementClass: either a string, eg.  
+`elementStyle="border: 1px solid red"`  
+... or a style Object:  
+`:elementStyle="{ border: '1px solid orange' }"`
+
 ### Supported languages
 
 We support English, Korean and Japanese. y Language options are available. default value is "en".

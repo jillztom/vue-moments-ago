@@ -1,5 +1,5 @@
 <template>
-  <span v-if="date" class="vue-moments-ago"
+  <span v-if="date" class="vue-moments-ago" :style="elementStyle" :class="elementClass"
     >{{ prefix }} {{ humanFormatted }} {{ suffix }}</span
   >
 </template>
@@ -63,6 +63,14 @@ export default {
     lang: {
       type: String,
       default: "en"
+    },
+    elementClass: {
+      type: String | Object,
+      default: ""
+    },
+    elementStyle: {
+      type: String | Object,
+      default: ""
     }
   },
 
