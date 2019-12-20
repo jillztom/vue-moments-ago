@@ -29,7 +29,7 @@ export default{
 In the template, use:
 
 ```
-<vue-moments-ago prefix="posted" suffix="ago" date="2018-05-02T20:22:22.285Z" lang="en"></vue-moments-ago>
+<vue-moments-ago prefix="posted" suffix="ago" date="2018-05-02T20:22:22.285Z" lang="en" />
 ```
 
 Result:
