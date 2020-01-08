@@ -66,6 +66,7 @@ export default {
   },
 
   created() {
+    this.updateDifference();
      const interval = setInterval(() => {
       this.updateDifference();
     }, 1000);
