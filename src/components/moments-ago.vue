@@ -5,9 +5,7 @@
 </template>
 
 <script>
-import Vue from "vue";
 import moment from "moment";
-Vue.prototype.moment = moment;
 
 export default {
   data() {
@@ -66,10 +64,13 @@ export default {
     }
   },
 
-  mounted() {
-    setInterval(() => {
-      this.getSeconds(this.date);
+  created() {
+    this.updateDifference();
+    const interval = setInterval(() => {
+      this.updateDifference();
     }, 1000);
+
+    this.$once('hook:destroyed', () => clearInterval(interval));
   },
 
   computed: {
@@ -95,8 +96,8 @@ export default {
   },
 
   methods: {
-    getSeconds(time) {
-      let seconds = moment().diff(moment(time), "seconds");
+    updateDifference() {
+      let seconds = moment().diff(moment(this.date), "seconds");
       this.humanReadable = this.getDuration(seconds);
       if (this.humanReadable) {
         this.humanDifference = this.humanReadable.interval;
