@@ -31,7 +31,7 @@ export default {
         },
         fr: {
           few: "il ya",
-          postfix: "",
+          postfix: "s",
         }
       },
       epochs: {
