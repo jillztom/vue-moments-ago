@@ -30,7 +30,7 @@ export default {
           postfix: "",
         },
         fr: {
-          few: "il ya",
+          few: "il y a",
           postfix: "s",
         }
       },
