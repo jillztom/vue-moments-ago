@@ -128,7 +128,5 @@ export default {
 </script>
 
 <style scoped>
-.vue-moments-ago {
-  font-size: 12px;
-}
+
 </style>
